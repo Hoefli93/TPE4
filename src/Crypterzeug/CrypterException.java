@@ -1,6 +1,10 @@
+
 package Crypterzeug;
 
-public class CrypterException {
+import java.lang.Throwable;
+
+
+public class CrypterException extends Exception {
 	
 	
 	

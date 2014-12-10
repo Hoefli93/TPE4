@@ -1,149 +1,78 @@
 package Verschluesselungsverfahren;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import Crypterzeug.CrypterException;
+import Crypterzeug.Crypter;
+
 /**
- * Caesar de and encoding System via KEY movement with the A-Z
- * 
- * @author Sinan,Nils und Timo
+ *
+ * @author 1331770
  * 
  */
-public class CrypterCaesar extends CrypterFactory {
-	private int keyCode;
-	private String key;
+public class CaesarVerschlüsselung implements Crypter {
 
-	public CrypterCaesar(String key) {
-		// this.keyCode = Konstanten.CAESAR.getStartingPoint((int)
-		// key.charAt(0));
-		this.keyCode = (int) key.charAt(0)- Konstanten.CAESAR.getFIRST_LETTER() + 1;
+	private String schluessel;
+
+	public CaesarVerschlüsselung(String schluessel) {
+		this.schluessel = schluessel;
+
 	}
 
-	/**
-	 * @return the key
-	 */
-	public int getKey() {
-		return keyCode;
-	}
-
-	private String encryptMessage;
-
-	/**
-	 * the decoded message
-	 * 
-	 * @return encryptMessage
-	 */
-	public String getEncryptMessage() {
-		return encryptMessage;
-	}
-
-	/**
-	 * decoding Caesar system
-	 */
 	@Override
-	public String encrypt(String message) throws CrypterException {
-		this.encryptMessage = caesarEncrypt(setNewText(message));
-		return encryptMessage;
+	public String encrypt(String text) throws CrypterException {
+		int verschiebung = ((int) this.schluessel.charAt(0)) - 64;
+		return encrypt(text, verschiebung);
 	}
 
-	private String caesarEncrypt(String message) {
-		String secretMessage = "";
-		int grenzeTest = 0;
-		for (int index = 0; index < message.length(); index++) {
-			grenzeTest = message.charAt(index) + getKey();
-			if (grenzeTest <= 90) {
-				secretMessage += (char) (grenzeTest);
+	private String encrypt(String text, int verschiebung) {
+		text = text.toUpperCase();
+		String ergebnis = "";
+		for (int i = 0; i < text.length(); i++) {
+			ergebnis += (char) ((text.charAt(i) - 'A' + verschiebung) % 26 + 'A');
+		}
+		return ergebnis;
+	}
+
+	@Override
+	public List<String> encrypt(List<String> textKomplett) throws CrypterException {
+		List<String> ergebnis = new LinkedList<String>();
+		for (String text : textKomplett) {
+			ergebnis.add(encrypt(text));
+		}
+		return ergebnis;
+	}
+
+	@Override
+	public String decrypt(String crypterText) throws CrypterException {
+		int verschiebung = ((int) this.schluessel.charAt(0)) - 64;
+		return decrypt(crypterText, -verschiebung);
+	}
+
+	private String decrypt(String text, int verschiebung) {
+		String ergebnis = "";
+		for (int i = 0; i < text.length(); i++) {
+
+			char a = (char) ((text.charAt(i) - 'A' + verschiebung) % 26 + 'A');
+			if (a < 65) {
+				ergebnis += (char) (a + 26);
 			} else {
-				secretMessage += (char) (grenzeTest - 26);
+				ergebnis += (char) a;
 			}
 		}
-		return secretMessage;
+		return ergebnis;
+
 	}
 
-	/**
-	 * decrypted message
-	 */
-	private String decryptMessage;
-
-	/**
-	 * Original message
-	 * 
-	 * @return decryptMessage
-	 */
-	public String getDecryptMessage() {
-		return decryptMessage;
-	}
-
-	/**
-	 * finally to get the original message
-	 */
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		if (cypherText == getEncryptMessage()) {
-			return caesarDecrypt(getEncryptMessage());
-		}
-		return caesarDecrypt(cypherText);
-	}
-
-	private String caesarDecrypt(String message) {
-		message = getEncryptMessage();
-		String originalMessage = "";
-		int grenzeTest = 0;
-		for (int index = 0; index < message.length(); index++) {
-			grenzeTest = message.charAt(index) - getKey();
-			originalMessage += (char) (grenzeTest);
-		}
-		this.decryptMessage = originalMessage;
-		return originalMessage;
-	}
-
-	/**
-	 * to get the encrypted List
-	 */
-	private List<String> encryptListe;
-
-	public List<String> getEncryptListe() {
-		return encryptListe;
-	};
-
-	/**
-	 * various Messages encrypted via util List
-	 */
-	@SuppressWarnings("null")
-	@Override
-	public List<String> encrypt(List<String> messages) throws CrypterException {
-		List<String> encryptListe = null;
-		if (messages.isEmpty()) {
-			return null;
-		}
-		for (int index = 0; index <= messages.lastIndexOf(messages); index++) {
-			encryptListe.add(index, encrypt(setNewText(messages.get(index))));
-		}
-		this.encryptListe = encryptListe;
-		return encryptListe;
-	}
-
-	/**
-	 * getting the original List
-	 */
-	private List<String> originalList;
-
-	public List<String> getOriginalList() {
-		return originalList;
-	};
-
-	/**
-	 * Original List
-	 */
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> crypterTextKomplett)
 			throws CrypterException {
-		List<String> encryptListe = null;
-		if (cypherTexte.isEmpty()) {
-			return null;
+		List<String> ergebnis = new LinkedList<String>();
+		for (String text : crypterTextKomplett) {
+			ergebnis.add(decrypt(text));
 		}
-		for (int index = 0; index <= cypherTexte.lastIndexOf(cypherTexte); index++) {
-			encryptListe.add(index, decrypt(setNewText(cypherTexte.get(index))));
-		}
-		this.originalList = encryptListe;
-		return encryptListe;
+		return ergebnis;
 	}
+
 }

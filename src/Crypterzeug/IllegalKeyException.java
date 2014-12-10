@@ -1,5 +1,7 @@
 package Crypterzeug;
 
-public class IllegalKeyException {
+import java.lang.Throwable;
+
+public class IllegalKeyException extends Exception {
 
 }
