@@ -2,6 +2,6 @@ package Crypterzeug;
 
 import java.lang.Throwable;
 
-public class IllegalKeyException extends Exception {
+public class IllegalKeyException extends CrypterException {
 
 }

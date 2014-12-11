@@ -1,5 +1,5 @@
 package Verschluesselungsverfahren;
 
-public class Substitutionschiffre {
+public class CrypterXOR {
 
 }

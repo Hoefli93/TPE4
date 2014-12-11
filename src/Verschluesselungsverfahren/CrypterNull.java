@@ -1,5 +1,5 @@
 package Verschluesselungsverfahren;
 
-public class Nullschiffre {
+public class CrypterNull {
 
 }

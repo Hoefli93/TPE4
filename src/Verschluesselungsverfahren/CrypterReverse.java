@@ -1,5 +1,5 @@
 package Verschluesselungsverfahren;
 
-public class XORVerschlüsselung {
+public class CrypterReverse {
 
 }
