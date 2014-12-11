@@ -34,30 +34,30 @@ public interface Crypter {
 	 * Verschlusselt den gegebenen Text mit dem angegebenen Schlussel.
 	 *
 	 * @param messages
-	 *            Nachrichten, die Verschlusselt werden soll.
+	 *            Nachrichten, die Verschluesselt werden soll.
 	 *
 	 * @return verschlusselte Texte.
 	 * @throws CrypterException
-	 *             Wird geworfen, wenn Probleme mit der Verschlusselung
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
 	 *             auftreten.
 	 */
 	public List<String> encrypt(List<String> messages) throws CrypterException;
 
 	/**
-	 * Entschlusselt den gegebenen Text mit dem angegebenen Schlussel.
+	 * Verschluesselt den gegebenen Text mit dem angegebenen Schlussel.
 	 *
 	 * @param cypherText
 	 *            Nachricht, die entschlusselt werden soll.
 	 *
 	 * @return entschlusselter Text.
 	 * @throws CrypterException
-	 *             Wird geworfen, wenn Probleme mit der Verschlusselung
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
 	 *             auftreten.
 	 */
 	public String decrypt(String cypherText) throws CrypterException;
 
 	/**
-	 * Entschlusselt den gegebenen Text mit dem angegebenen Schlussel.
+	 * Entschluesselt den gegebenen Text mit dem angegebenen Schluessel.
 	 *
 	 * @param cypherTexte
 	 *            Nachrichten, die entschlusselt werden soll.

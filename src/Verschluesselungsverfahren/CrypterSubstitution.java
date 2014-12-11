@@ -1,5 +1,6 @@
 package Verschluesselungsverfahren;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import Crypterzeug.Crypter;
@@ -26,20 +27,24 @@ public class CrypterSubstitution implements Crypter {
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		
+		List<String>result =new LinkedList<String>();
+		for(String text: messages){
+			result.add(encrypt(text));
+		}
+		return result;
+	}
+
+	@Override
+	public String decrypt(String crypterText) throws CrypterException {
+		crypterText = crypterText.toUpperCase();
+		String alphabet ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		 
 		return null;
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
