@@ -8,6 +8,7 @@ import Crypterzeug.Crypter;
 /**
  *
  * @author 1331770
+ * @author 1320733
  * 
  */
 public class CrypterCaesar implements Crypter {

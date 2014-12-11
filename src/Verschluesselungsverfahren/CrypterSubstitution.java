@@ -5,46 +5,69 @@ import java.util.List;
 
 import Crypterzeug.Crypter;
 import Crypterzeug.CrypterException;
-
+/**
+*
+* @author 1331770
+* @author 1320733
+*/
 public class CrypterSubstitution implements Crypter {
 
-	String key;
+	private String key;
 
 	public CrypterSubstitution(String key) {
 		this.key = key;
-
 	}
 
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		message = message.toUpperCase();
-		String result = null; //String buffer vllt mit append
-		for (int i = 0; i < message.length(); i++) {
-			result += key.charAt((int) (message.charAt(i) - 65));
+		StringBuffer result = new StringBuffer();
+		for(int i = 0; i < message.length(); i++) {
+
+			result.append(key.charAt((int)(message.charAt(i)-65))); 
 		}
 		return result.toString();
 	}
 
+
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		List<String>result =new LinkedList<String>();
-		for(String text: messages){
+		List<String> result = new LinkedList<String>();
+		for(String text : messages) {
 			result.add(encrypt(text));
 		}
 		return result;
 	}
 
 	@Override
-	public String decrypt(String crypterText) throws CrypterException {
-		crypterText = crypterText.toUpperCase();
-		String alphabet ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		 
-		return null;
+	public String decrypt(String cypherText) throws CrypterException {
+		cypherText = cypherText.toUpperCase();
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		StringBuffer result = new StringBuffer();
+		for(int i = 0; i < cypherText.length(); i++) {
+			char s = (cypherText.charAt(i));
+			result.append(alphabet.charAt(entschluesseln(s)));		
+		}
+		return result.toString();
+	}
+
+	private int entschluesseln(char gesucht) {
+		for(int j = 0; j < key.length(); j++) {
+			if(gesucht == key.charAt(j)) {
+				return j;
+			}
+		}
+		return 0;
 	}
 
 	@Override
-	public List<String> decrypt(List<String> crypterTexte)
+	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
-		return null;
+		List<String> result = new LinkedList<String>();
+		for(String text : cypherTexte) {
+			result.add(decrypt(text));
+		}
+		return result;
 	}
+
 }

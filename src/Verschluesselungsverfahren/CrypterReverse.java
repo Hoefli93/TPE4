@@ -1,35 +1,49 @@
 package Verschluesselungsverfahren;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import Crypterzeug.Crypter;
 import Crypterzeug.CrypterException;
-
-public class CrypterReverse implements Crypter {
+/**
+*
+* @author 1331770
+* @author 1320733
+*/
+public class CrypterReverse implements Crypter{
 
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		message = message.toUpperCase();
+		String result = "";
+		for(int i = message.length()-1; i > (-1); i--) {
+			result += message.charAt(i);
+		}
+		return result;
 	}
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> result = new LinkedList<String>();
+		for(String text : messages){
+			result.add(encrypt(text));
+		}
+		return result;
 	}
 
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		return encrypt(cypherText);
 	}
 
 	@Override
 	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> result = new LinkedList<String>();
+		for(String text : cypherTexte){
+			result.add(decrypt(text));
+		}
+		return result;
 	}
 
 }

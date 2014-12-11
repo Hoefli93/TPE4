@@ -4,7 +4,11 @@ import java.util.List;
 
 import Crypterzeug.Crypter;
 import Crypterzeug.CrypterException;
-
+/**
+*
+* @author 1331770
+* @author 1320733
+*/
 public class CrypterNull implements Crypter{
 
 	@Override
