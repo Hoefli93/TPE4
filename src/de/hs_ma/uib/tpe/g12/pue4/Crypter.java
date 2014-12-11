@@ -1,5 +1,7 @@
-package Crypterzeug;
+package de.hs_ma.uib.tpe.g12.pue4;
 import java.util.List;
+
+import Exceptions.CrypterException;
 
 /**
  * Grundlegendes Interface, um Verschlusselung durchzufuhren. Mit Hilfe dieses
@@ -14,8 +16,14 @@ import java.util.List;
  * Zwischen den beiden Methoden muss bei gleichem Schlussel {@code key}
  * folgendes gelten: {@code text.equals(decrypt(encrypt(text)) == true}.
  *
- * @author
+ * /**
+ *
+ * @author 1331770
+ * @author 1320733
+ * @author 1312740
+ * 
  */
+ 
 public interface Crypter {
 	/**
 	 * Verschlusselt den gegebenen Text mit dem angegebenen Schlussel.

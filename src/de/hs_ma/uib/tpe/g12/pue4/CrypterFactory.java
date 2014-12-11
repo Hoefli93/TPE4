@@ -1,10 +1,17 @@
-package Crypterzeug;
+package de.hs_ma.uib.tpe.g12.pue4;
 
-import Verschluesselungsverfahren.*;
+import Verschlüsselungsverfahren.*;
 
+/**
+*
+* @author 1331770
+* @author 1320733
+* @author 1312740
+* 
+*/
 public class CrypterFactory {
 
-	public Crypter createCrypter(String schluessel, Enum selectedCrypter) {
+	public Crypter createCrypter(String schluessel, CrypterEnum selectedCrypter) {
 
 		switch (selectedCrypter) {
 		case CAESAR:

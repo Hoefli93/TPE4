@@ -1,13 +1,16 @@
-package Verschluesselungsverfahren;
+package Verschlüsselungsverfahren;
 
 import java.util.List;
 
-import Crypterzeug.Crypter;
-import Crypterzeug.CrypterException;
+import Exceptions.CrypterException;
+import de.hs_ma.uib.tpe.g12.pue4.Crypter;
+
 /**
 *
 * @author 1331770
 * @author 1320733
+* @author 1312740
+* 
 */
 public class CrypterNull implements Crypter{
 
