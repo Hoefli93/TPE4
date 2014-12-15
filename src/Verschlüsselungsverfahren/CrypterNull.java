@@ -12,32 +12,34 @@ import de.hs_ma.uib.tpe.g12.pue4.Crypter;
 * @author 1312740
 * 
 */
-public class CrypterNull implements Crypter{
+public class CrypterNull implements Crypter {
 
-	@Override
-	public String encrypt(String message) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   
+    public CrypterNull(){
+        super();
+    }
+    
+    @Override
+    public String encrypt(String message) throws CrypterException {
+        return message;
+    }
 
-	@Override
-	public List<String> encrypt(List<String> messages) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<String> encrypt(List<String> messages) throws CrypterException {
+        for(String thisString : messages){
+            thisString = encrypt(thisString);
+        }
+        return messages;
+    }
 
-	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String decrypt(String crypterText) throws CrypterException {
+        return encrypt(crypterText);
+    }
 
-	@Override
-	public List<String> decrypt(List<String> cypherTexte)
-			throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    @Override
+    public List<String> decrypt(List<String> crypterTexte) throws CrypterException {
+        return encrypt(crypterTexte);
+    }
 
 }
