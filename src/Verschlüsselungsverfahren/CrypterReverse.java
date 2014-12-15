@@ -18,35 +18,35 @@ public class CrypterReverse implements Crypter{
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		message = message.toUpperCase();
-		String result = "";
+		String ergebnis = "";
 		for(int i = message.length()-1; i > (-1); i--) {
-			result += message.charAt(i);
+			ergebnis += message.charAt(i);
 		}
-		return result;
+		return ergebnis;
 	}
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		List<String> result = new LinkedList<String>();
-		for(String text : messages){
-			result.add(encrypt(text));
+		List<String> ergebnis = new LinkedList<String>();
+		for(String message : messages){
+			ergebnis.add(encrypt(message));
 		}
-		return result;
+		return ergebnis;
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		return encrypt(cypherText);
+	public String decrypt(String crypterText) throws CrypterException {
+		return encrypt(crypterText);
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
-		List<String> result = new LinkedList<String>();
-		for(String text : cypherTexte){
-			result.add(decrypt(text));
+		List<String> ergebnis = new LinkedList<String>();
+		for(String message : crypterTexte){
+			ergebnis.add(decrypt(message));
 		}
-		return result;
+		return ergebnis;
 	}
 
 }
