@@ -1,18 +1,31 @@
-
 package Exceptions;
 
 import java.lang.Throwable;
 
 /**
-*
-* @author 1331770
-* @author 1320733
-* @author 1312740
-* 
-*/
+ *
+ * @author 1331770
+ * @author 1320733
+ * @author 1312740
+ * 
+ */
 public class CrypterException extends Exception {
-	
-	
-	
 
+	private static final long serialVersionUID = 1L;
+
+	public CrypterException() {
+		super();
+	}
+
+	public CrypterException(String message) {
+		super(message);
+	}
+
+	public CrypterException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public CrypterException(Throwable cause) {
+		super(cause);
+	}
 }
