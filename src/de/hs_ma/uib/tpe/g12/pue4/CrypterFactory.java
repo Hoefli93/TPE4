@@ -11,9 +11,9 @@ import Verschlüsselungsverfahren.*;
 */
 public class CrypterFactory {
 
-	public static Crypter createCrypter(String schluessel, CrypterEnum crypterAuswahl) {
+	public Crypter createCrypter(String schluessel, CrypterEnum selectedCrypter) {
 
-		switch (crypterAuswahl) {
+		switch (selectedCrypter) {
 		case CAESAR:
 			return new CrypterCaesar(schluessel);
 		case NULL:
