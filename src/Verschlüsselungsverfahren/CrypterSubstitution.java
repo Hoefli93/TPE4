@@ -15,10 +15,10 @@ import de.hs_ma.uib.tpe.g12.pue4.Crypter;
 */
 public class CrypterSubstitution implements Crypter {
 
-	private String key;
+	private String schluessel;
 
-	public CrypterSubstitution(String key) {
-		this.key = key;
+	public CrypterSubstitution(String schluessel) {
+		this.schluessel = schluessel;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class CrypterSubstitution implements Crypter {
 		StringBuffer result = new StringBuffer();
 		for(int i = 0; i < message.length(); i++) {
 
-			result.append(key.charAt((int)(message.charAt(i)-65))); 
+			result.append(schluessel.charAt((int)(message.charAt(i)-65))); 
 		}
 		return result.toString();
 	}
@@ -43,20 +43,20 @@ public class CrypterSubstitution implements Crypter {
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		cypherText = cypherText.toUpperCase();
+	public String decrypt(String crypterText) throws CrypterException {
+		crypterText = crypterText.toUpperCase();
 		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		StringBuffer result = new StringBuffer();
-		for(int i = 0; i < cypherText.length(); i++) {
-			char s = (cypherText.charAt(i));
-			result.append(alphabet.charAt(entschluesseln(s)));		
+		StringBuffer ergebnis = new StringBuffer();
+		for(int i = 0; i < crypterText.length(); i++) {
+			char s = (crypterText.charAt(i));
+			ergebnis.append(alphabet.charAt(entschluesseln(s)));		
 		}
-		return result.toString();
+		return ergebnis.toString();
 	}
 
 	private int entschluesseln(char gesucht) {
-		for(int j = 0; j < key.length(); j++) {
-			if(gesucht == key.charAt(j)) {
+		for(int j = 0; j < schluessel.length(); j++) {
+			if(gesucht == schluessel.charAt(j)) {
 				return j;
 			}
 		}
@@ -64,13 +64,13 @@ public class CrypterSubstitution implements Crypter {
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherTexte)
+	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
-		List<String> result = new LinkedList<String>();
-		for(String text : cypherTexte) {
-			result.add(decrypt(text));
+		List<String> ergebnis = new LinkedList<String>();
+		for(String message : crypterTexte) {
+			ergebnis.add(decrypt(message));
 		}
-		return result;
+		return ergebnis;
 	}
 
 }

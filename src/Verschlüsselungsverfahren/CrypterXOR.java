@@ -77,11 +77,11 @@ public class CrypterXOR implements Crypter {
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		List<String> result = new LinkedList<String>();
-		for(String text : messages) {
-			result.add(encrypt(text));
+		List<String> ergebnis = new LinkedList<String>();
+		for(String message : messages) {
+			ergebnis.add(encrypt(message));
 		}
-		return result;
+		return ergebnis;
 	}
 
 	@Override
@@ -92,11 +92,11 @@ public class CrypterXOR implements Crypter {
 	@Override
 	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
-		List<String> result = new LinkedList<String>();
-		for(String text : crypterTexte) {
-			result.add(decrypt(text));
+		List<String> ergebnis = new LinkedList<String>();
+		for(String messages : crypterTexte) {
+			ergebnis.add(decrypt(messages));
 		}
-		return result;
+		return ergebnis;
 	}
 
 }
