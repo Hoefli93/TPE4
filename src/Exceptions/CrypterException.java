@@ -12,13 +12,16 @@ import java.lang.Throwable;
 public class CrypterException extends Exception {
 
 	private static final long serialVersionUID = 1L;
+	
+	String message;
 
-	public CrypterException() {
-		super();
-	}
-
+	
 	public CrypterException(String message) {
-		super(message);
+		this.message=message;
+	}
+	
+	public String getMessage(){
+		return message;
 	}
 
 	public CrypterException(String message, Throwable cause) {

@@ -1,6 +1,6 @@
 package Verschlüsselungsverfahren;
 
-import java.math.BigInteger;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,34 +22,47 @@ public class CrypterXOR implements Crypter {
 		this.schluessel = schluessel;
 	}
 
+	/**
+	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
+	 *
+	 * @param message
+	 *            Nachricht, die Verschluesselt werden soll.
+	 *
+	 * @return verschluesselter Text.
+	 * @throws CrypterException
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
+	 *             auftreten.
+	 */
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		message = message.toUpperCase();
 		schluessel = schluessel.toUpperCase();
 		StringBuffer ergebnis = new StringBuffer();
-		for(int i = 0; i < message.length(); i++) {
+		for(int i=0;i<message.length();i++) {
 			ergebnis.append(add(message.charAt(i), schluessel.charAt((i % schluessel.length()))));
 		}
 		return ergebnis.toString();
 	}
 
+
 	private char add(char message, char schluessel) {
 		int a = charToValue(message);
 		int b = charToValue(schluessel);
 
-		String aBin = Integer.toBinaryString(a);
-		String bBin = Integer.toBinaryString(b);
-		while(aBin.length() < 5) {
-			aBin = "0" + aBin;
+		String binaerEins = Integer.toBinaryString(a);
+		String binaerZwei = Integer.toBinaryString(b);
+		
+		while(binaerEins.length() < 5) {
+			binaerEins = "0" + binaerEins;
 		}
 		
-		while(bBin.length() < 5) {
-			bBin = "0" + bBin;
+		while(binaerZwei.length() < 5) {
+			binaerZwei = "0" + binaerZwei;
 		}
 
 		StringBuffer ergebnis = new StringBuffer();
 		for(int i = 0; i < 5; i++) {
-			if(aBin.charAt(i) == bBin.charAt(i)) {
+			if(binaerEins.charAt(i) == binaerZwei.charAt(i)) {
 				ergebnis.append("0");
 				
 			}
@@ -66,15 +79,26 @@ public class CrypterXOR implements Crypter {
 
 	private int charToValue(char a) {
 
-		String alphabet = ("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");
-		for(int i = 0; i < alphabet.length(); i++) {
-			if(a == alphabet.charAt(i)) {
+		String gesamt = ("@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_");
+		for(int i = 0; i < gesamt.length(); i++) {
+			if(a == gesamt.charAt(i)) {
 				return (i);
 			}
 		}
 		return 0;
 	}
 
+	/**
+	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
+	 *
+	 * @param messages
+	 *            Nachrichten, die Verschluesselt werden soll.
+	 *
+	 * @return verschluesselte Texte.
+	 * @throws CrypterException
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
+	 *             auftreten.
+	 */
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
 		List<String> ergebnis = new LinkedList<String>();
@@ -83,12 +107,34 @@ public class CrypterXOR implements Crypter {
 		}
 		return ergebnis;
 	}
-
+	
+	/**
+	 * Verschluesselt den gegebenen Text mit dem angegebenen Schluessel.
+	 *
+	 * @param crypterText
+	 *            Nachricht, die entschluesselt werden soll.
+	 *
+	 * @return entschluesselter Text.
+	 * @throws CrypterException
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
+	 *             auftreten.
+	 */
 	@Override
 	public String decrypt(String crypterText) throws CrypterException {
 		return encrypt(crypterText);
 	}
 
+	/**
+	 * Entschluesselt den gegebenen Text mit dem angegebenen Schluessel.
+	 *
+	 * @param crypterTexte
+	 *            Nachrichten, die entschluesselt werden soll.
+	 *
+	 * @return entschluesselte Texte.
+	 * @throws CrypterException
+	 *             Wird geworfen, wenn Probleme mit der Verschluesselung
+	 *             auftreten.
+	 */
 	@Override
 	public List<String> decrypt(List<String> crypterTexte)
 			throws CrypterException {
