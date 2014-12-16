@@ -1,5 +1,6 @@
 package de.hs_ma.uib.tpe.g12.pue4;
 
+import Exceptions.IllegalKeyException;
 import Verschlüsselungsverfahren.*;
 
 /**
@@ -11,8 +12,13 @@ import Verschlüsselungsverfahren.*;
 */
 public class CrypterFactory {
 
-	public static Crypter createCrypter(String schluessel, CrypterEnum crypterAuswahl) {
+	public static Crypter createCrypter(String schluessel, CrypterEnum crypterAuswahl) throws IllegalKeyException {
 
+		schluessel = schluessel.toUpperCase();
+		
+		checkSchluessel(schluessel);
+		
+		
 		switch (crypterAuswahl) {
 		case CAESAR:
 			return new CrypterCaesar(schluessel);
@@ -28,6 +34,15 @@ public class CrypterFactory {
 			return null;
 		}
 
+	}
+		
+		public static void checkSchluessel(String schluessel) throws IllegalKeyException{
+			for(int i=0; i<schluessel.length() ; i++){
+				if(schluessel.charAt(i) < '@' || schluessel.charAt(i) > '_'){
+					throw new IllegalKeyException();
+				}
+				
+			}
 	}
 }
 

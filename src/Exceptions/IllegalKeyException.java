@@ -11,18 +11,16 @@ import java.lang.Throwable;
  */
 public class IllegalKeyException extends CrypterException {
 
-	String key;
-	
 	private static final long serialVersionUID = 1L;
 
-	
-	public IllegalKeyException(String message,String key) {
-		super(message);
-		this.key=key;
+	public IllegalKeyException() {
+		super("Ungültig");
+
 	}
-	
-	public String getKey(){
-		return key;
+
+	public IllegalKeyException(String message) {
+		super(message);
+
 	}
 
 	public IllegalKeyException(String message, Throwable cause) {
