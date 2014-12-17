@@ -10,6 +10,14 @@ import de.hs_ma.uib.tpe.g12.pue4.CrypterEnum;
 import de.hs_ma.uib.tpe.g12.pue4.CrypterFactory;
 import Exceptions.IllegalKeyException;
 
+/**
+ *
+ * @author 1331770
+ * @author 1320733
+ * @author 1312740
+ * 
+ */
+
 public class IterableCryptoDemo {
 
 	public static void main(String[] args) throws IllegalKeyException {
