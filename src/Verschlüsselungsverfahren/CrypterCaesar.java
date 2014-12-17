@@ -88,17 +88,7 @@ public class CrypterCaesar implements Crypter {
 	}
 
 	private String decrypt(String message, int verschiebung) {
-		String ergebnis = "";
-		for (int i = 0; i < message.length(); i++) {
-
-			char z = (char)((message.charAt(i) - 65 + verschiebung) % 26 + 65);
-			if (z < 65) {
-				ergebnis = ergebnis + (char)(z + 26);
-			} else {
-				ergebnis = ergebnis + (char)z;
-			}
-		}
-		return ergebnis;
+		return encrypt(message,verschiebung);
 
 	}
 
