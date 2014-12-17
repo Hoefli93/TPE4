@@ -6,55 +6,57 @@ import Exceptions.CrypterException;
 import de.hs_ma.uib.tpe.g12.pue4.Crypter;
 
 /**
-*
-* @author 1331770
-* @author 1320733
-* @author 1312740
-* 
-*/
+ *
+ * @author 1331770
+ * @author 1320733
+ * @author 1312740
+ * 
+ */
 public class IterableDecrypter implements Iterable<String> {
 
-    private  Iterable<String> messages;
-    
+	private Iterable<String> messages;
 
-    private final Crypter crypter;
+	private final Crypter crypter;
 
-    public IterableDecrypter(Iterable<String> messages, Crypter crypter) {
-        this.messages = messages;
-        this.crypter = crypter;
-    }
+	public IterableDecrypter(Iterable<String> messages, Crypter crypter) {
+		this.messages = messages;
+		this.crypter = crypter;
+	}
 
-    @Override
-    public Iterator<String> iterator() {
-        
-        return new Iterator<String>(){
-  
-            Iterator<String> messagesIterator = messages.iterator();
+	/**
+	 * Returns an iterator over a set of elements of type String.
+	 * 
+	 * @return iterator
+	 */
+	@Override
+	public Iterator<String> iterator() {
 
-  
-            @Override
-            public boolean hasNext() {
-            
-                return messagesIterator.hasNext();
-            }
+		return new Iterator<String>() {
 
+			Iterator<String> messagesIterator = messages.iterator();
 
-            @Override
-            public String next() {
-                try {
-                    return crypter.decrypt(messagesIterator.next());
-                } catch (CrypterException e) {
+			@Override
+			public boolean hasNext() {
 
-                    return "";
-                }
-            }
+				return messagesIterator.hasNext();
+			}
+
+			@Override
+			public String next() {
+				try {
+					return crypter.decrypt(messagesIterator.next());
+				} catch (CrypterException e) {
+
+					return "";
+				}
+			}
 
 			@Override
 			public void remove() {
-				
+
 			}
-            
-        };
-    }
+
+		};
+	}
 
 }

@@ -39,13 +39,13 @@ public class CrypterCaesar implements Crypter {
 		return encrypt(message, verschiebung);
 	}
 
-	
 	private String encrypt(String message, int verschiebung) {
 		message = message.toUpperCase();
 		String ergebnis = "";
-		
+
 		for (int i = 0; i < message.length(); i++) {
-			ergebnis = ergebnis + (char) ((message.charAt(i) - 65 + verschiebung) % 26 + 65);
+			ergebnis = ergebnis
+					+ (char) ((message.charAt(i) - 65 + verschiebung) % 26 + 65);
 		}
 		return ergebnis;
 	}
@@ -83,12 +83,12 @@ public class CrypterCaesar implements Crypter {
 	 */
 	@Override
 	public String decrypt(String crypterText) throws CrypterException {
-		int verschiebung = ((int)this.schluessel.charAt(0)) - 64;
+		int verschiebung = ((int) this.schluessel.charAt(0)) - 64;
 		return decrypt(crypterText, -verschiebung);
 	}
 
 	private String decrypt(String message, int verschiebung) {
-		return encrypt(message,verschiebung);
+		return encrypt(message, verschiebung);
 
 	}
 

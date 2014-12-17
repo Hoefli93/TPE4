@@ -36,10 +36,10 @@ public class CrypterSubstitution implements Crypter {
 	public String encrypt(String message) throws CrypterException {
 		message = message.toUpperCase();
 		
-		StringBuffer ergebnis = new StringBuffer();
+		String ergebnis = "";
 		for(int i = 0; i < message.length(); i++) {
 
-			ergebnis.append(schluessel.charAt((int)(message.charAt(i)-65))); 
+			ergebnis= ergebnis+(schluessel.charAt((int)(message.charAt(i)-65))); 
 		}
 		return ergebnis.toString();
 	}
@@ -79,12 +79,11 @@ public class CrypterSubstitution implements Crypter {
 	public String decrypt(String crypterText) throws CrypterException {
 		crypterText = crypterText.toUpperCase();
 		
-		StringBuffer ergebnis = new StringBuffer();
-		String gesamt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String ergebnis = "";
 		
 		for(int i = 0; i < crypterText.length(); i++) {
 			char a = (crypterText.charAt(i));
-			ergebnis.append(gesamt.charAt(suchhilfe(a)));		
+			ergebnis = ergebnis +(char)(suche(a)+65);		
 		}
 		return ergebnis.toString();
 	}
@@ -119,7 +118,7 @@ public class CrypterSubstitution implements Crypter {
 	 * @return position des chars im schluessel.
 	 *           
 	 */
-	private int suchhilfe(char gesuchterChar) {
+	private int suche(char gesuchterChar) {
 		for(int i = 0; i < schluessel.length(); i++) {
 			if(gesuchterChar == schluessel.charAt(i)) {
 				return i;

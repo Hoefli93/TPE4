@@ -6,22 +6,27 @@ import Exceptions.CrypterException;
 import de.hs_ma.uib.tpe.g12.pue4.Crypter;
 
 /**
-*
-* @author 1331770
-* @author 1320733
-* @author 1312740
-* 
-*/
+ *
+ * @author 1331770
+ * @author 1320733
+ * @author 1312740
+ * 
+ */
 public class IterableCrypter implements Iterable<String> {
 
-	private  Iterable<String> messages;
-	private  Crypter crypter;
+	private Iterable<String> messages;
+	private Crypter crypter;
 
 	public IterableCrypter(Iterable<String> messages, Crypter crypter) {
 		this.messages = messages;
 		this.crypter = crypter;
 	}
 
+	/**
+	 * Returns an iterator over a set of elements of type String.
+	 * 
+	 * @return iterator
+	 */
 	@Override
 	public Iterator<String> iterator() {
 

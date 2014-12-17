@@ -17,14 +17,30 @@ public class CrypterException extends Exception {
 		super();
 	}
 
+	/**
+	 *
+	 * @param message
+	 *
+	 */
 	public CrypterException(String message) {
 		super(message);
 	}
 
+	/**
+	 *
+	 * @param message
+	 *            ,cause
+	 *
+	 */
 	public CrypterException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
+	/**
+	 *
+	 * @param cause
+	 *
+	 */
 	public CrypterException(Throwable cause) {
 		super(cause);
 	}

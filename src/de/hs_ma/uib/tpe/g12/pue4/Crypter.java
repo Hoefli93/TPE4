@@ -1,4 +1,5 @@
 package de.hs_ma.uib.tpe.g12.pue4;
+
 import java.util.List;
 
 import Exceptions.CrypterException;
@@ -23,7 +24,7 @@ import Exceptions.CrypterException;
  * @author 1312740
  * 
  */
- 
+
 public interface Crypter {
 	/**
 	 * Verschlusselt den gegebenen Text mit dem angegebenen Schlussel.

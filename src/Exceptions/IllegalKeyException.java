@@ -18,15 +18,31 @@ public class IllegalKeyException extends CrypterException {
 
 	}
 
+	/**
+	 *
+	 * @param message
+	 *
+	 */
 	public IllegalKeyException(String message) {
 		super(message);
 
 	}
 
+	/**
+	 *
+	 * @param message
+	 *            ,cause
+	 * 
+	 */
 	public IllegalKeyException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
+	/**
+	 *
+	 * @param cause
+	 * 
+	 */
 	public IllegalKeyException(Throwable cause) {
 		super(cause);
 	}
